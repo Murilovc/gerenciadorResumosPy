@@ -1,0 +1,54 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+    {% block titulo %}
+    <title>Listagem</title>
+    {% endblock %}
+
+
+        {% block conteudo %}
+
+            <h1 class="h3 mb-4 text-gray-800">Listagem de Cadastros</h1>
+                            
+            <hr>
+
+            <table class="table table-striped ">
+                            <thead >
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Email</th>
+                                    <th>Editar</th>
+                                    <th>Excluir</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {% for item in object_list %}
+
+                                <tr>
+                                    <td scope="row">{{ item.nome }}</td>
+                                    <td>{{ item.email }}</td>
+                                    <td><a href="{% url 'update' item.pk %}" class="btn btn-warning">editar</a></td>
+                                    <td><a href="{% url 'deletar' item.pk %}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a> </td>
+                                </tr>
+                                                    
+                                {% empty %}
+                                
+                                    Nada foi registrado
+                                
+                                {% endfor %}
+
+                            </tbody>
+            </table>
+
+        {% endblock %}
+ 
+        
+
+
+
+
+           
+           
