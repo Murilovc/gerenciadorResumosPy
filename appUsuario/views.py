@@ -33,3 +33,10 @@ class DeleteUsuario(DeleteView):
 def abertura_modelform(request):
     return render(request, "index.html")
 
+#**********************REEDUCANDO**********************#
+
+
+#*************************RESUMO***********************#
+
+#***********************RELATÓRIO**********************#
+
