@@ -1,10 +1,21 @@
 from django.db import models
 
 class Usuario(models.Model):
+    
+    NIVEL = (
+        (0, 'Administrador'),
+        (1, 'Estagiário'),
+        (2, 'Diretor'),
+        (3, 'Avaliador'),
+        
+    )
+    
     nome = models.CharField('Digite seu nome', max_length=200 )
     email = models.EmailField('Digite seu email', max_length=200 )
     #aprender a usar models.IntegerChoices() aqui embaixo
-    nivel = models.IntegerField('Digite o nível de privilégio');
+    nivel = models.CharField(
+        max_length=1,
+        choices=NIVEL);
     senha = models.CharField('Digite a senha', max_length=200)
 
     def __str__(self):
