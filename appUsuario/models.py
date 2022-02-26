@@ -1,12 +1,13 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
-class Usuario(models.Model):
+class Usser(AbstractUser):
     
     NIVEL = (
-        (0, 'Administrador'),
-        (1, 'Estagiário'),
-        (2, 'Diretor'),
-        (3, 'Avaliador'),
+        ('admin', 'Administrador'),
+        ('estagiario', 'Estagiário'),
+        ('diretor', 'Diretor'),
+        ('avaliador', 'Avaliador'),
         
     )
     
@@ -14,8 +15,9 @@ class Usuario(models.Model):
     email = models.EmailField('Digite seu email', max_length=200 )
     #aprender a usar models.IntegerChoices() aqui embaixo
     nivel = models.CharField(
-        max_length=1,
-        choices=NIVEL);
+        max_length=15,
+        choices=NIVEL,
+        blank=True);
     senha = models.CharField('Digite a senha', max_length=200)
 
     def __str__(self):
