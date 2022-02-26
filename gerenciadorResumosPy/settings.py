@@ -32,15 +32,20 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    #apps do django
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'appUsuario',
+    #apps de terceiros
     #serve para melhorar o layout dos forms
     'crispy_forms',
+    #meus apps
+    #'appUsuario',
+    'users.apps.UsersConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -131,3 +136,5 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = "appUsuario.User"
