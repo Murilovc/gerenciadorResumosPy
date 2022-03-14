@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #nossos apps
+    'cadastros',
     #serve para melhorar o layout dos forms
     'crispy_forms',
 ]
