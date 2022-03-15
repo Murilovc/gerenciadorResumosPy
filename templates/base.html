@@ -12,7 +12,7 @@
 
     {% block titulo %}
 
-    <title>SB Admin 2 - Blank</title>
+    <title>Gerenciamento de Resumos</title>
 
     {% endblock %}
 
@@ -37,28 +37,28 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
+                <!-- <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                </div> -->
+                <div class="sidebar-brand-text mx-3">Gerenciamento de Resumos <sup>PROEX</sup></div>
             </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
+            <!-- Nav Item - Dashboard 
             <li class="nav-item">
                 <a class="nav-link" href="index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
-            </li>
+            </li>-->
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                Painel Administrativo
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -66,14 +66,14 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Cadastros</span>
+                    <span>Cadastrar</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Cadastros Gerais:</h6>
-                        <a class="collapse-item" href="{% url 'cadastro' %}">Alunos</a>
-                        <a class="collapse-item" href="">Professores</a>
-                        <a class="collapse-item" href="">Servidores</a>
+                        <h6 class="collapse-header">Cadastrar novo:</h6>
+                        <a class="collapse-item" href="{% url 'cadastro' %}">Usuário</a>
+                        <a class="collapse-item" href="">Reeducando</a>
+                        <a class="collapse-item" href="">Resumo</a>
                     </div>
                 </div>
             </li>
@@ -88,10 +88,10 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Listagem em Geral:</h6>
-                        <a class="collapse-item" href="{% url 'listagem' %}">Alunos</a>
-                        <a class="collapse-item" href="">Professores</a>
-                        <a class="collapse-item" href="">Servidores</a>
+                        <h6 class="collapse-header">Ver lista:</h6>
+                        <a class="collapse-item" href="{% url 'listagem' %}">Usuário</a>
+                        <a class="collapse-item" href="">Reeducando</a>
+                        <a class="collapse-item" href="">Resumo</a>
                     </div>
                 </div>
             </li>
@@ -101,44 +101,76 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Addons
+                Mapa do site
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item active">
+            <!-- Nav Item - Collapse Menu da Sessão Atual -->
+            <li class="nav-item">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
                     aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
+                    <span>Sessão</span>
                 </a>
                 <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
+                        <!-- <h6 class="collapse-header">Login Screens:</h6>
                         <a class="collapse-item" href="login.html">Login</a>
                         <a class="collapse-item" href="register.html">Register</a>
                         <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
                         <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item active" href="blank.html">Blank Page</a>
+                        <h6 class="collapse-header">Sessão:</h6>-->
+                        <a class="collapse-item" href="404.html">Login</a>
+                        <a class="collapse-item" href="blank.html">Logout</a>
                     </div>
                 </div>
             </li>
 
-            <!-- Nav Item - Charts -->
+            <!-- Nav Item - Collapse Menu da Sala de Correção -->
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseCorrecao" aria-expanded="true"
+                    aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Sala de Correção</span>
+                </a>
+                <div id="collapseCorrecao" class="collapse" aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="blank.html">Página principal</a>
+                        <a class="collapse-item" href="404.html">Adicionar resumo a fila</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Collapse Menu da Área do Estagiário-->
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseEstagiario" aria-expanded="true"
+                    aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Área do Estagiário</span>
+                </a>
+                <div id="collapseEstagiario" class="collapse" aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="404.html">Fazer upload de resumo</a>
+                    </div>
+                </div>
+            </li>
+
+
+            <!-- Nav Item - Charts 
             <li class="nav-item">
                 <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span></a>
-            </li>
+            </li>-->
 
-            <!-- Nav Item - Tables -->
+            <!-- Nav Item - Tables 
             <li class="nav-item">
                 <a class="nav-link" href="tables.html">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Tables</span></a>
-            </li>
+            </li>-->
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
