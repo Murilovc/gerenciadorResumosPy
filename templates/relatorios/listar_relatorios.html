@@ -10,7 +10,7 @@
 
         {% block conteudo %}
 
-            <h1 class="h3 mb-4 text-gray-800">Listagem de Usuários</h1>
+            <h1 class="h3 mb-4 text-gray-800">Listagem de Reeducandos</h1>
                             
             <hr>
 
@@ -18,20 +18,18 @@
                 <thead >
                     <tr>
                         <th>Nome</th>
-                        <th>Email</th>
-                        <th>Editar</th>
-                        <th>Excluir</th>
+                        <th>RGC</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                    {% for usuario in object_list %}
+                    {% for reeducando in object_list %}
 
                     <tr>
-                        <td scope="row">{{ usuario.nome }}</td>
-                        <td>{{ usuario.email }}</td>
-                        <td><a href="{% url 'update' usuario.pk %}" class="btn btn-warning">editar</a></td>
-                        <td><a href="{% url 'deletar' usuario.pk %}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a> </td>
+                        <td scope="row">{{ reeducando.nome }}</td>
+                        <td>{{ reeducando.rgc }}</td>
+                        <td><a href="{% url 'update' reeducando.pk %}" class="btn btn-warning">editar</a></td>
+                        <td><a href="{% url 'deletar' reeducando.pk %}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a> </td>
                     </tr>
                                         
                     {% empty %}
