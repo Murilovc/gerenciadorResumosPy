@@ -10,7 +10,7 @@
 
         {% block conteudo %}
 
-            <h1 class="h3 mb-4 text-gray-800">Listagem de Reeducandos</h1>
+            <h1 class="h3 mb-4 text-gray-800">Listagem de reeducandos</h1>
                             
             <hr>
 
@@ -19,6 +19,8 @@
                     <tr>
                         <th>Nome</th>
                         <th>RGC</th>
+                        <th>Editar</th>
+                        <th>Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,8 +30,8 @@
                     <tr>
                         <td scope="row">{{ reeducando.nome }}</td>
                         <td>{{ reeducando.rgc }}</td>
-                        <td><a href="{% url 'update' reeducando.pk %}" class="btn btn-warning">editar</a></td>
-                        <td><a href="{% url 'deletar' reeducando.pk %}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a> </td>
+                        <td><a href="{% url 'reeducando_update' reeducando.pk %}" class="btn btn-warning">editar</a></td>
+                        <td><a href="{% url 'reeducando_exclusao' reeducando.pk %}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a> </td>
                     </tr>
                                         
                     {% empty %}

@@ -10,26 +10,34 @@
 
         {% block conteudo %}
 
-            <h1 class="h3 mb-4 text-gray-800">Listagem de Reeducandos</h1>
+            <h1 class="h3 mb-4 text-gray-800">Listagem de relatórios</h1>
                             
             <hr>
 
             <table class="table table-striped ">
                 <thead >
                     <tr>
-                        <th>Nome</th>
-                        <th>RGC</th>
+                        <th>Nota conteudo</th>
+                        <th>Nota estrutura</th>
+                        <th>Nota ortografia</th>
+                        <th>Status</th>
+                        <th>Comentário</th>
+                        <th>Resumo</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                    {% for reeducando in object_list %}
+                    {% for relatorio in object_list %}
 
                     <tr>
-                        <td scope="row">{{ reeducando.nome }}</td>
-                        <td>{{ reeducando.rgc }}</td>
-                        <td><a href="{% url 'update' reeducando.pk %}" class="btn btn-warning">editar</a></td>
-                        <td><a href="{% url 'deletar' reeducando.pk %}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a> </td>
+                        <td scope="row">{{ relatorio.nota_conteudo }}</td>
+                        <td>{{ relatorio.nota_estrutura }}</td>
+                        <td>{{ relatorio.nota_ortografia }}</td>
+                        <td>{{ relatorio.status }}</td>
+                        <td>{{ relatorio.comentario }}</td>
+                        <td>{{ relatorio.resumo }}</td>
+                        <td><a href="{% url 'resumo_update' relatorio.pk %}" class="btn btn-warning">editar</a></td>
+                        <td><a href="{% url 'resumo_exclusao' relatorio.pk %}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a> </td>
                     </tr>
                                         
                     {% empty %}

@@ -10,28 +10,30 @@
 
         {% block conteudo %}
 
-            <h1 class="h3 mb-4 text-gray-800">Listagem de Usuários</h1>
+            <h1 class="h3 mb-4 text-gray-800">Listagem de resumos</h1>
                             
             <hr>
 
             <table class="table table-striped ">
                 <thead >
                     <tr>
-                        <th>Nome</th>
-                        <th>Email</th>
-                        <th>Editar</th>
-                        <th>Excluir</th>
+                        <th>Título</th>
+                        <th>Data</th>
+                        <th>Arquivo</th>
+                        <th>Reeducando</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                    {% for usuario in object_list %}
+                    {% for resumo in object_list %}
 
                     <tr>
-                        <td scope="row">{{ usuario.nome }}</td>
-                        <td>{{ usuario.email }}</td>
-                        <td><a href="{% url 'update' usuario.pk %}" class="btn btn-warning">editar</a></td>
-                        <td><a href="{% url 'deletar' usuario.pk %}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a> </td>
+                        <td scope="row">{{ resumo.titulo }}</td>
+                        <td>{{ resumo.data }}</td>
+                        <td>{{ resumo.arquivo }}</td>
+                        <td>{{ resumo.reeducando }}</td>
+                        <td><a href="{% url 'resumo_update' resumo.pk %}" class="btn btn-warning">editar</a></td>
+                        <td><a href="{% url 'resumo_exclusao' resumo.pk %}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a> </td>
                     </tr>
                                         
                     {% empty %}

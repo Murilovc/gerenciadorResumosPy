@@ -29,7 +29,7 @@ class Reeducando(models.Model):
     
 class Resumo(models.Model):
     data = models.DateTimeField('Data')
-    titulo = models.CharField('Título do resumo', max_length=200)
+    titulo = models.CharField('Título do resumo', max_length=200, default='titulo')
     arquivo = models.FilePathField()
     reeducando = models.ForeignKey(Reeducando, on_delete=models.CASCADE)
     

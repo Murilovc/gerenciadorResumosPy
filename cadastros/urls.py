@@ -13,16 +13,16 @@ urlpatterns = [
     # por isso estes estão redirecionando para o início
     path('reeducandos/listagem/', ListagemReeducando.as_view(), name='reeducando_listagem'),
     path('reeducandos/cadastro/', CadastroReeducando.as_view(), name='reeducando_cadastro'),
-    path('reeducandos/update/', UpdateReeducando.as_view(), name='reeducando_update'),
-    path('reeducandos/exclusao/', ExclusaoReeducando.as_view(), name='reeducando_exclusao'),
+    path('reeducandos/update/<int:pk>', UpdateReeducando.as_view(), name='reeducando_update'),
+    path('reeducandos/exclusao/<int:pk>', ExclusaoReeducando.as_view(), name='reeducando_exclusao'),
 
     path('resumos/listagem/', ListagemResumo.as_view(), name='resumo_listagem'),
     path('resumos/cadastro/', CadastroResumo.as_view(), name='resumo_cadastro'),
-    path('resumos/update/', UpdateResumo.as_view(), name='resumo_update'),
-    path('resumos/exclusao/', ExclusaoResumo.as_view(), name='resumo_exclusao'),
+    path('resumos/update/<int:pk>', UpdateResumo.as_view(), name='resumo_update'),
+    path('resumos/exclusao/<int:pk>', ExclusaoResumo.as_view(), name='resumo_exclusao'),
 
     path('relatorios/listagem/', ListagemRelatorio.as_view(), name='relatorio_listagem'),
     path('relatorios/listagem/', CadastroRelatorio.as_view(), name='relatorio_cadastro'),
-    path('relatorios/listagem/', UpdateRelatorio.as_view(), name='relatorio_update'),
-    path('relatorios/listagem/', ExclusaoRelatorio.as_view(), name='relatorio_exclusao'),
+    path('relatorios/listagem/<int:pk>', UpdateRelatorio.as_view(), name='relatorio_update'),
+    path('relatorios/listagem/<int:pk>', ExclusaoRelatorio.as_view(), name='relatorio_exclusao'),
 ]
