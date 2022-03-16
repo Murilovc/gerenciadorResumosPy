@@ -2,13 +2,86 @@
 
 {% load static %}
 
-
-
     {% block titulo %}
-    <title>Admin Geral</title>
+        <title>Admin Geral</title>
+    {% endblock %}
+
+    {% block administrativo %}
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Painel Administrativo
+        </div>
+
+        <!-- Nav Item - Usuários Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsuarios"
+                aria-expanded="true" aria-controls="collapseUsuarios">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Usuários</span>
+            </a>
+            <div id="collapseUsuarios" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <!-- <h6 class="collapse-header">Cadastrar novo</h6> -->
+                    <!-- Chamamos a página pelo apelido definido em urls.py -->
+                    <a class="collapse-item" href="{% url 'cadastro' %}">Cadastrar novo</a>
+                    <a class="collapse-item" href="{% url 'listagem' %}">Ver lista</a>
+                </div>
+            </div>
+        </li>
+
+        <!-- Nav Item - Reeducandos Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReeducandos"
+                aria-expanded="true" aria-controls="collapseUtilities">
+                <i class="fas fa-fw fa-wrench"></i>
+                <span>Reeducandos</span>
+            </a>
+            <div id="collapseReeducandos" class="collapse" aria-labelledby="headingUtilities"
+                data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <!-- <h6 class="collapse-header">Ver lista de:</h6> -->
+                    <a class="collapse-item" href="{% url 'reeducando_cadastro' %}">Cadastrar novo</a>
+                    <a class="collapse-item" href="{% url 'reeducando_listagem' %}">Ver lista</a>
+
+                </div>
+            </div>
+        </li>
+
+        <!-- Nav Item - Resumos Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseResumos"
+                aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Resumos</span>
+            </a>
+            <div id="collapseResumos" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <!-- <h6 class="collapse-header">Cadastrar novo</h6> -->
+                    <a class="collapse-item" href="{% url 'resumo_cadastro' %}">Cadastrar novo</a>
+                    <a class="collapse-item" href="{% url 'resumo_listagem' %}">Ver lista</a>
+                </div>
+            </div>
+        </li>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRelatorios"
+                aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Relatórios</span>
+            </a>
+            <div id="collapseRelatorios" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <!-- <h6 class="collapse-header">Cadastrar novo</h6> -->
+                    <a class="collapse-item" href="{% url 'relatorio_listagem' %}">Ver lista</a>
+                </div>
+            </div>
+        </li>
+
     {% endblock %}
 
     {% block conteudo %}
-    <h1 class="h3 mb-4 text-gray-800">Index</h1>
+    <h1 class="h3 mb-4 text-gray-800">Olá, bem-vindo ao Gerenciador de Resumos da PROEX</h1>
 
     {% endblock %}

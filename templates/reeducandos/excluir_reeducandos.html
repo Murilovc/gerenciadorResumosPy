@@ -9,11 +9,11 @@
     {% load crispy_forms_tags %}
     {% block conteudo %}
 
-        <h1 class="h3 mb-4 text-gray-800">Excluir Cadastros</h1>
+        <h1 class="h3 mb-4 text-gray-800">Excluir cadastro</h1>
         <br>
-        <p>Deseja excluir o cadastro </p>
+        <p>Deseja excluir o cadastro? </p>
         <br> Nome: <b> {{ object.nome }} </b> 
-        <br> Email: <b> {{ object.email }} 
+        <br> RGC: <b> {{ object.rgc }} 
     
         <form method="POST" action="">
             {% csrf_token %}
