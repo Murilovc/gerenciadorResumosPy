@@ -132,3 +132,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'cadastros.UsuarioDjango'
+
+FILE_PATH_FIELD_DIRECTORY = BASE_DIR/'arquivos_resumos'

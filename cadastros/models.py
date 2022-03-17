@@ -1,9 +1,13 @@
 from django.db import models
+from email.policy import default
+from django.contrib.auth.models import AbstractUser
+
+from gerenciadorResumosPy import settings
 
 class Usuario(models.Model):
     
     nome = models.CharField('Digite seu nome', max_length=200 )
-    email = models.EmailField('Digite seu email', max_length=200 )
+    email = models.EmailField('Digite seu email', max_length=200, unique=True)
     #aprender a usar models.IntegerChoices() aqui embaixo
     NIVEL = (
         (4, 'Avaliador'),
@@ -19,6 +23,11 @@ class Usuario(models.Model):
 
     def __str__(self):
         return self.nome
+    
+    
+class UsuarioDjango(AbstractUser):
+    pass
+    
 
 class Reeducando(models.Model):
     nome = models.CharField('Nome do reeducando', max_length=200)
@@ -30,8 +39,11 @@ class Reeducando(models.Model):
 class Resumo(models.Model):
     data = models.DateTimeField('Data')
     titulo = models.CharField('Título do resumo', max_length=200, default='titulo')
-    arquivo = models.FilePathField()
+    arquivo = models.FilePathField(path=settings.FILE_PATH_FIELD_DIRECTORY)
     reeducando = models.ForeignKey(Reeducando, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.titulo
     
 class Relatorio(models.Model):
     nota_conteudo = models.DecimalField('Nota conteudo', max_digits=4, decimal_places=2)
@@ -41,7 +53,10 @@ class Relatorio(models.Model):
     status = models.CharField('Status',max_length=200)
     comentario = models.CharField('Comentário', max_length=200)
     #ainda falta criar a classe Avaliador
-    #avaliador = models.ForeignKey(Avaliador, on_delete=models.CASCADE)
+    avaliador = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     resumo = models.ForeignKey(Resumo, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.status
 
 
