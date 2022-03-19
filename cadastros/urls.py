@@ -1,6 +1,6 @@
 from django.urls import path
 from cadastros import views
-from cadastros.views import CadastroReeducando, CadastroRelatorio, CadastroResumo, CadastroUsuario, ExclusaoReeducando, ExclusaoRelatorio, ExclusaoResumo, ListagemReeducando, ListagemRelatorio, ListagemResumo, ListagemUsuario, UpdateReeducando, UpdateRelatorio, UpdateResumo, UpdateUsuario, DeleteUsuario
+from cadastros.views import AdicaoResumoParaAvaliador, AprovacaoRelatorioParaDiretor, CadastroReeducando, CadastroResumo, CadastroUsuario, Corretor, ExclusaoReeducando, ExclusaoRelatorio, ExclusaoResumo, HistoricoRelatorioAvaliador, ListagemReeducando, ListagemRelatorio, ListagemResumo, ListagemUsuario, SalaCorrecao, UpdateReeducando, UpdateResumo, UpdateUsuario, DeleteUsuario
 
 
 urlpatterns = [
@@ -22,7 +22,12 @@ urlpatterns = [
     path('resumos/exclusao/<int:pk>', ExclusaoResumo.as_view(), name='resumo_exclusao'),
 
     path('relatorios/listagem/', ListagemRelatorio.as_view(), name='relatorio_listagem'),
-    path('relatorios/listagem/', CadastroRelatorio.as_view(), name='relatorio_cadastro'),
-    path('relatorios/listagem/<int:pk>', UpdateRelatorio.as_view(), name='relatorio_update'),
     path('relatorios/listagem/<int:pk>', ExclusaoRelatorio.as_view(), name='relatorio_exclusao'),
+    
+    path('sala-correcao', SalaCorrecao.as_view(), name='sala_correcao'),
+    path('escolha-resumo', AdicaoResumoParaAvaliador.as_view(), name='escolha_resumo'),
+    path('corretor', Corretor.as_view(), name='corretor'),
+    path('historico-de-relatorio', HistoricoRelatorioAvaliador.as_view(), name='historico_relatorio'),
+    path('aprovacao-de-relatorio', AprovacaoRelatorioParaDiretor.as_view(), name='aprovacao_relatorio'),
+    
 ]
