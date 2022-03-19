@@ -1,6 +1,7 @@
 from django.db import models
 from email.policy import default
 from django.contrib.auth.models import AbstractUser
+from datetime import datetime
 
 from gerenciadorResumosPy import settings
 
@@ -37,7 +38,7 @@ class Reeducando(models.Model):
         return self.rgc
     
 class Resumo(models.Model):
-    data = models.DateTimeField('Data')
+    data = models.DateField(default=datetime.now)
     titulo = models.CharField('Título do resumo', max_length=200, default='titulo')
     arquivo = models.FilePathField(path=settings.FILE_PATH_FIELD_DIRECTORY)
     reeducando = models.ForeignKey(Reeducando, on_delete=models.CASCADE)
