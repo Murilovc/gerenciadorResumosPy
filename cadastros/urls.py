@@ -1,16 +1,17 @@
 from django.urls import path
 from cadastros import views
-from cadastros.views import AdicaoResumoParaAvaliador, AprovacaoRelatorioParaDiretor, CadastroReeducando, CadastroResumo, CadastroUsuario, Corretor, ExclusaoReeducando, ExclusaoRelatorio, ExclusaoResumo, HistoricoRelatorioAvaliador, ListagemReeducando, ListagemRelatorio, ListagemResumo, ListagemUsuario, SalaCorrecao, UpdateReeducando, UpdateResumo, UpdateUsuario, DeleteUsuario
+from cadastros.views import AdicaoResumoParaAvaliador, AprovacaoRelatorioParaDiretor, CadastroReeducando, CadastroResumo, CadastroUsuario, Corretor, ExclusaoReeducando, ExclusaoRelatorio, ExclusaoResumo, HistoricoRelatorioAvaliador, ListagemReeducando, ListagemRelatorio, ListagemResumo, ListagemUsuario, Login, SalaCorrecao, UpdateReeducando, UpdateResumo, UpdateUsuario, DeleteUsuario
 
 
 urlpatterns = [
     path('', views.abertura_modelform, name='index'),
+    
+    # Páginas da área administrativa
     path('usuarios/cadastros/', CadastroUsuario.as_view(), name='cadastro'),
     path('usuarios/listagem/', ListagemUsuario.as_view(), name='listagem'),
     path('usuarios/update/<int:pk>', UpdateUsuario.as_view(), name='update'),
     path('usuarios/deletar/<int:pk>', DeleteUsuario.as_view(), name='deletar'),
-    # Os apelidos dos links já estão criados, mas as páginas não,
-    # por isso estes estão redirecionando para o início
+
     path('reeducandos/listagem/', ListagemReeducando.as_view(), name='reeducando_listagem'),
     path('reeducandos/cadastro/', CadastroReeducando.as_view(), name='reeducando_cadastro'),
     path('reeducandos/update/<int:pk>', UpdateReeducando.as_view(), name='reeducando_update'),
@@ -24,10 +25,13 @@ urlpatterns = [
     path('relatorios/listagem/', ListagemRelatorio.as_view(), name='relatorio_listagem'),
     path('relatorios/listagem/<int:pk>', ExclusaoRelatorio.as_view(), name='relatorio_exclusao'),
     
+    # Páginas do resto do site
     path('sala-correcao', SalaCorrecao.as_view(), name='sala_correcao'),
     path('escolha-resumo', AdicaoResumoParaAvaliador.as_view(), name='escolha_resumo'),
-    path('corretor', Corretor.as_view(), name='corretor'),
+    path('corretor/<int:pk>', Corretor.as_view(), name='corretor'),
     path('historico-de-relatorio', HistoricoRelatorioAvaliador.as_view(), name='historico_relatorio'),
     path('aprovacao-de-relatorio', AprovacaoRelatorioParaDiretor.as_view(), name='aprovacao_relatorio'),
     
+    #Login e Logout
+    path('login', Login.as_view(), name='login'),
 ]

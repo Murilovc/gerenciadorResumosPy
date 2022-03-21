@@ -3,5 +3,6 @@
 *.sqlite3
 
 cadastros/__pycache__
+cadastros/migrations
 cadastros/migrations/__pycache__
 gerenciadorResumosPy/__pycache__

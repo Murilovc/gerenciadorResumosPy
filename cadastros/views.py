@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
+from django.contrib.auth.views import LoginView
+
+from .forms import LoginResumoForm
 from .models import Reeducando, Relatorio, Resumo, Usuario
 #serve para redirecionar página
 from django.urls import reverse_lazy
@@ -156,6 +159,12 @@ def abertura_modelform(request):
     return render(request, "index.html")
 
 
+class Login(LoginView):
+    tamplate_name = 'registration/login.html'
+    form_class = LoginResumoForm
+    
+
+
 '''
 Página acessível apenas ao Usuário do tipo Avaliador.
 Exibe uma tabela para que o avaliador possa escolher
@@ -186,6 +195,8 @@ produzindo assim o relatório.
 É o CadastroRelatorio
 '''
 class Corretor(CreateView):
+    #talvez seja preciso trocar para Relatorio
+    model = Resumo
     tamplate_name = 'corretor.html'
     fields = ['nota_conteudo','nota_estrutura','nota_ortografia', 'comentario',]
     #recebe o apelido da página que foi defino em urls.py

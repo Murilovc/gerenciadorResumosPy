@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+    {% block titulo %}
+        <title>Sala de Correção</title>
+    {% endblock %}
+
+    {% block administrativo %}
+
+    {% endblock %}
+
+    {% block conteudo %}
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{ form | crispy }}
+            <div>
+                <button type="submit" class="save btn btn-success">Salvar</button>
+            </div>
+        </form>
+
+    {% endblock %}

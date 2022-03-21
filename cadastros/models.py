@@ -5,6 +5,7 @@ from datetime import datetime
 
 from gerenciadorResumosPy import settings
 
+
 class Usuario(models.Model):
     
     nome = models.CharField('Digite seu nome', max_length=200 )
@@ -27,8 +28,10 @@ class Usuario(models.Model):
     
     
 class UsuarioDjango(AbstractUser):
-    pass
-    
+    fk_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE) 
+    def __str__(self):
+        return self.usuario  
+     
 
 class Reeducando(models.Model):
     nome = models.CharField('Nome do reeducando', max_length=200)
@@ -54,8 +57,8 @@ class Relatorio(models.Model):
     status = models.CharField('Status',max_length=200)
     comentario = models.CharField('Comentário', max_length=200)
     #ainda falta criar a classe Avaliador
-    avaliador = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    resumo = models.ForeignKey(Resumo, on_delete=models.CASCADE)
+    #fk_avaliador = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    fk_resumo = models.ForeignKey(Resumo, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.status

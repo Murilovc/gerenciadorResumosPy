@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+    {% block titulo %}
+        <title>Sala de Correção</title>
+    {% endblock %}
+
+    {% block administrativo %}
+
+    {% endblock %}
+
+    {% block conteudo %}
+        <table class="table table-striped ">
+            <thead >
+                <tr>
+                    <th>Titulo</th>
+                    <th>Data</th>
+                    <th>Arquivo</th>
+                    <th>Reeducando</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for resumo in object_list %}
+
+                <tr>
+                    <td scope="row">{{ resumo.titulo }}</td>
+                    <td>{{ resumo.data }}</td>
+                    <td>{{ resumo.arquivo }}</td>
+                    <td>{{ resumo.reeducando }}</td>
+                    <td><a href="{% url 'corretor' resumo.pk %}" class="btn btn-warning">Avaliar</a></td>
+                </tr>
+                                    
+                {% empty %}
+                
+                    Nada foi registrado
+                
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endblock %}
