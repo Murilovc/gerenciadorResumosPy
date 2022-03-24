@@ -81,6 +81,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{% url 'sala_correcao' %}">Página principal</a>
                         <a class="collapse-item" href="{% url 'escolha_resumo' %}">Adicionar resumo a fila</a>
+                        <a class="collapse-item" href="{% url 'historico_relatorio' %}">Ver histórico</a>
                     </div>
                 </div>
             </li>
@@ -96,8 +97,8 @@
                 <div id="collapseDiretor" class="collapse" aria-labelledby="headingPages"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="blank.html">Fila de aprovação</a>
-                        <a class="collapse-item" href="404.html">Histórico de rejeição</a>
+                        <a class="collapse-item" href="{% url 'aprovacao_relatorio' %}">Fila de aprovação</a>
+                        <a class="collapse-item" href="{% url 'historico_relatorio' %}">Histórico de rejeição</a>
                     </div>
                 </div>
             </li>

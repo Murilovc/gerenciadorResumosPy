@@ -12,6 +12,12 @@
     {% endblock %}
 
     {% block conteudo %}
+        
+        <h3>Selecione um resumo para avaliar</h3>
+        <br>
+        <br>
+    
+        <div class="container">
         <table class="table table-striped ">
             <thead >
                 <tr>
@@ -25,7 +31,7 @@
             <tbody>
 
                 {% for resumo in object_list %}
-
+                
                 <tr>
                     <td scope="row">{{ resumo.titulo }}</td>
                     <td>{{ resumo.data }}</td>
@@ -41,4 +47,5 @@
                 {% endfor %}
             </tbody>
         </table>
+        </div>
     {% endblock %}

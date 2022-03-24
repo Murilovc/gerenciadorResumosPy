@@ -1,0 +1,15 @@
+<!--Pendente-->
+{% if object.status == '1' %}
+    {% object.status == 2 %}
+    {% object.save() %}
+<!--Aprovado-->
+{% else %} 
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{form | crispy}}
+        <div class="text-right">
+            <button type="submit" class="save btn btn-warning">Salvar Edição</button>
+        </div>
+    </form>
+
+{% endif %}

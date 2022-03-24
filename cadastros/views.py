@@ -196,11 +196,21 @@ produzindo assim o relatório.
 '''
 class Corretor(CreateView):
     #talvez seja preciso trocar para Relatorio
-    model = Resumo
+    model = Relatorio
     tamplate_name = 'corretor.html'
     fields = ['nota_conteudo','nota_estrutura','nota_ortografia', 'comentario',]
     #recebe o apelido da página que foi defino em urls.py
     success_url = reverse_lazy('sala_correcao')
+    
+    def get_object(self, queryset=None):
+        resumo = None
+        id = self.kwargs.get(self.pk_url_kwarg)
+        
+        if id is not None:
+            # Busca o resumo apartir do id
+            resumo = Resumo.objects.filter(id=id).first()
+            
+        return resumo
     
 
 '''
@@ -226,3 +236,15 @@ class AprovacaoRelatorioParaDiretor(ListView):
     model = Relatorio
     template_name = 'relatorios_por_diretor.html'
 
+
+'''
+Página que faz o update do status do relatório
+quando o Diretor clica no botão "aprovar" na página
+de aprovação de relatório
+'''
+class UpdateStatusRelatorio(UpdateView):
+    model = Relatorio
+    fields = ['status',]
+    template_name = 'relatorios/update_status_relatorio.html'
+    #recebe o apelido da página que foi defino em urls.py
+    success_url = reverse_lazy('aprovacao-relatorio')

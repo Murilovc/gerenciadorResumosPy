@@ -1,6 +1,6 @@
 from django.urls import path
 from cadastros import views
-from cadastros.views import AdicaoResumoParaAvaliador, AprovacaoRelatorioParaDiretor, CadastroReeducando, CadastroResumo, CadastroUsuario, Corretor, ExclusaoReeducando, ExclusaoRelatorio, ExclusaoResumo, HistoricoRelatorioAvaliador, ListagemReeducando, ListagemRelatorio, ListagemResumo, ListagemUsuario, Login, SalaCorrecao, UpdateReeducando, UpdateResumo, UpdateUsuario, DeleteUsuario
+from cadastros.views import AdicaoResumoParaAvaliador, AprovacaoRelatorioParaDiretor, CadastroReeducando, CadastroResumo, CadastroUsuario, Corretor, ExclusaoReeducando, ExclusaoRelatorio, ExclusaoResumo, HistoricoRelatorioAvaliador, ListagemReeducando, ListagemRelatorio, ListagemResumo, ListagemUsuario, Login, SalaCorrecao, UpdateReeducando, UpdateResumo, UpdateStatusRelatorio, UpdateUsuario, DeleteUsuario
 
 
 urlpatterns = [
@@ -31,6 +31,7 @@ urlpatterns = [
     path('corretor/<int:pk>', Corretor.as_view(), name='corretor'),
     path('historico-de-relatorio', HistoricoRelatorioAvaliador.as_view(), name='historico_relatorio'),
     path('aprovacao-de-relatorio', AprovacaoRelatorioParaDiretor.as_view(), name='aprovacao_relatorio'),
+    path('update-status-relatorio/<int:pk>', UpdateStatusRelatorio.as_view(), name='update-relatorio'),
     
     #Login e Logout
     path('login', Login.as_view(), name='login'),

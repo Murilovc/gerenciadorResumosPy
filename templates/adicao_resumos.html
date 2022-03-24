@@ -12,12 +12,34 @@
     {% endblock %}
 
     {% block conteudo %}
-        <form method="POST" action="">
-            {% csrf_token %}
-            {{ form | crispy }}
-            <div>
-                <button type="submit" class="save btn btn-success">Salvar</button>
-            </div>
-        </form>
+        <table class="table table-striped ">
+            <thead >
+                <tr>
+                    <th>Titulo</th>
+                    <th>Data</th>
+                    <th>Arquivo</th>
+                    <th>Reeducando</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for resumo in object_list %}
+
+                <tr>
+                    <td scope="row">{{ resumo.titulo }}</td>
+                    <td>{{ resumo.data }}</td>
+                    <td>{{ resumo.arquivo }}</td>
+                    <td>{{ resumo.reeducando }}</td>
+                    <td><a href="{% url 'corretor' resumo.pk %}" class="btn btn-warning">Avaliar</a></td>
+                </tr>
+                                    
+                {% empty %}
+                
+                    Nada foi registrado
+                
+                {% endfor %}
+            </tbody>
+        </table>
 
     {% endblock %}

@@ -45,6 +45,7 @@ class Resumo(models.Model):
     titulo = models.CharField('Título do resumo', max_length=200, default='titulo')
     arquivo = models.FilePathField(path=settings.FILE_PATH_FIELD_DIRECTORY)
     reeducando = models.ForeignKey(Reeducando, on_delete=models.CASCADE)
+    avaliador = models.ForeignKey(Usuario, on_delete=models.CASCADE, blank=True)
     
     def __str__(self):
         return self.titulo
@@ -53,12 +54,19 @@ class Relatorio(models.Model):
     nota_conteudo = models.DecimalField('Nota conteudo', max_digits=4, decimal_places=2)
     nota_estrutura = models.DecimalField('Nota estrutura', max_digits=4, decimal_places=2)
     nota_ortografia = models.DecimalField('Nota otografia', max_digits=4, decimal_places=2)
-    #aprender a usar models.TextChoices aqui em baixo
-    status = models.CharField('Status',max_length=200)
+    
+    STATUS = (
+        (3, 'Reprovado'),
+        (2, 'Aprovado'),
+        (1, 'Pendente'),       
+    )
+    status = models.IntegerField(
+        choices=STATUS,
+        blank=True, default=1)
+    
     comentario = models.CharField('Comentário', max_length=200)
-    #ainda falta criar a classe Avaliador
-    #fk_avaliador = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    fk_resumo = models.ForeignKey(Resumo, on_delete=models.CASCADE)
+    avaliador = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    resumo = models.ForeignKey(Resumo, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.status

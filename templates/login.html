@@ -1,8 +1,3 @@
-<?php
-session_start();
-
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
@@ -108,16 +103,8 @@ session_start();
 		</style>
 	</head>
 	<body>
-		
-		<?php
-			if(isset($_SESSION['msg'])){
-				echo $_SESSION['msg'];
-				unset ($_SESSION['msg']);
-			}
 
-		?>
-
-		<form method="POST" action="valida.php">
+		<form method="POST" action="">
 			<div class="login-form">
 				<!-- outros valores
 				

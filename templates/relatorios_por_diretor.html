@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+    {% block titulo %}
+        <title>Página de solicitação de aprovação</title>
+    {% endblock %}
+
+    {% block administrativo %}
+
+    {% endblock %}
+
+    {% block conteudo %}
+        
+        <h3>Clique no botão para aprovar um relatório</h3>
+        <br>
+        <br>
+    
+        <div class="container">
+        <table class="table table-striped ">
+            <thead >
+                <tr>
+                    <th>Nota conteudo</th>
+                    <th>Nota estrutura</th>
+                    <th>Nota ortografia</th>
+                    <th>Status</th>
+                    <th>Comentário</th>
+                    <th>Resumo</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for relatorio in object_list %}
+                
+                <tr>
+                    <td scope="row">{{ relatorio.nota_conteudo }}</td>
+                    <td>{{ relatorio.nota_estrutura }}</td>
+                    <td>{{ relatorio.nota_ortografia }}</td>
+                    <td>{{ relatorio.status }}</td>
+                    <td>{{ relatorio.comentario }}</td>
+                    <td>{{ relatorio.resumo }}</td>
+                    <!-- update relatorio ainda em construção -->
+                    <td><a href="{% url 'update-relatorio' relatorio.pk %}" class="btn btn-warning">Aprovar</a><a href=></td>
+                </tr>
+                                    
+                {% empty %}
+                
+                    Nada foi registrado
+                
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    {% endblock %}
