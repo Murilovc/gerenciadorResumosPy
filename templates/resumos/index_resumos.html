@@ -17,7 +17,7 @@
                 <h1 class="h3 mb-4 text-gray-800">Cadastros</h1>
                 {% endif %}
 
-                <form method="POST" action="" >
+                <form method="POST" action="" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form | crispy }}
                     <div class="text-right">
