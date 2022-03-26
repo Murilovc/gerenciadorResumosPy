@@ -160,7 +160,7 @@ def abertura_modelform(request):
 
 
 class Login(LoginView):
-    tamplate_name = 'registration/login.html'
+    template_name = 'registration/login.html'
     form_class = LoginResumoForm
     
 
@@ -185,6 +185,17 @@ class SalaCorrecao(ListView):
     model = Resumo
     template_name = 'sala_correcao.html'
 
+
+'''
+Página acessível apenas ao Usuário do tipo Avaliador.
+Exibe uma lista de relatórios que foram feitos pelo
+avaliador que está logado.
+
+Semelhante ao ListagemRelatorio
+'''   
+class HistoricoRelatorioAvaliador(ListView):
+    model = Relatorio
+    template_name = 'relatorios_por_avaliador.html'
     
 '''
 Página acessível apenas ao Usuário do tipo Avaliador.
@@ -197,7 +208,7 @@ produzindo assim o relatório.
 class Corretor(CreateView):
     #talvez seja preciso trocar para Relatorio
     model = Relatorio
-    tamplate_name = 'corretor.html'
+    template_name = 'corretor.html'
     fields = ['nota_conteudo','nota_estrutura','nota_ortografia', 'comentario',]
     #recebe o apelido da página que foi defino em urls.py
     success_url = reverse_lazy('sala_correcao')
@@ -212,17 +223,6 @@ class Corretor(CreateView):
             
         return resumo
     
-
-'''
-Página acessível apenas ao Usuário do tipo Avaliador.
-Exibe uma lista de relatórios que foram feitos pelo
-avaliador que está logado.
-
-Semelhante ao ListagemRelatorio
-'''   
-class HistoricoRelatorioAvaliador(ListView):
-    model = Relatorio
-    tamplate_name = 'relatorios_por_avaliador.html'
 
 
 '''
@@ -248,3 +248,12 @@ class UpdateStatusRelatorio(UpdateView):
     template_name = 'relatorios/update_status_relatorio.html'
     #recebe o apelido da página que foi defino em urls.py
     success_url = reverse_lazy('aprovacao-relatorio')
+    
+
+class CadastroResumoPorEstagiario(CreateView):
+    model = Resumo
+    fields = ['data','titulo','arquivo', 'reeducando',]
+    template_name = 'resumos/upload_resumos.html'
+    
+    #recebe o apelido da página que foi defino em urls.py
+    success_url = reverse_lazy('resumo_listagem')

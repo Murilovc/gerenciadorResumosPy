@@ -1,6 +1,6 @@
 from django.urls import path
 from cadastros import views
-from cadastros.views import AdicaoResumoParaAvaliador, AprovacaoRelatorioParaDiretor, CadastroReeducando, CadastroResumo, CadastroUsuario, Corretor, ExclusaoReeducando, ExclusaoRelatorio, ExclusaoResumo, HistoricoRelatorioAvaliador, ListagemReeducando, ListagemRelatorio, ListagemResumo, ListagemUsuario, Login, SalaCorrecao, UpdateReeducando, UpdateResumo, UpdateStatusRelatorio, UpdateUsuario, DeleteUsuario
+from cadastros.views import AdicaoResumoParaAvaliador, AprovacaoRelatorioParaDiretor, CadastroReeducando, CadastroResumo, CadastroResumoPorEstagiario, CadastroUsuario, Corretor, ExclusaoReeducando, ExclusaoRelatorio, ExclusaoResumo, HistoricoRelatorioAvaliador, ListagemReeducando, ListagemRelatorio, ListagemResumo, ListagemUsuario, Login, SalaCorrecao, UpdateReeducando, UpdateResumo, UpdateStatusRelatorio, UpdateUsuario, DeleteUsuario
 
 
 urlpatterns = [
@@ -23,15 +23,23 @@ urlpatterns = [
     path('resumos/exclusao/<int:pk>', ExclusaoResumo.as_view(), name='resumo_exclusao'),
 
     path('relatorios/listagem/', ListagemRelatorio.as_view(), name='relatorio_listagem'),
-    path('relatorios/listagem/<int:pk>', ExclusaoRelatorio.as_view(), name='relatorio_exclusao'),
+    path('relatorios/exclusao/<int:pk>', ExclusaoRelatorio.as_view(), name='relatorio_exclusao'),
     
     # Páginas do resto do site
-    path('sala-correcao', SalaCorrecao.as_view(), name='sala_correcao'),
-    path('escolha-resumo', AdicaoResumoParaAvaliador.as_view(), name='escolha_resumo'),
+    
+    #avaliador
+    path('sala-correcao/', SalaCorrecao.as_view(), name='sala_correcao'),
+    path('escolha-resumo/', AdicaoResumoParaAvaliador.as_view(), name='escolha_resumo'),
     path('corretor/<int:pk>', Corretor.as_view(), name='corretor'),
-    path('historico-de-relatorio', HistoricoRelatorioAvaliador.as_view(), name='historico_relatorio'),
-    path('aprovacao-de-relatorio', AprovacaoRelatorioParaDiretor.as_view(), name='aprovacao_relatorio'),
+    path('historico-de-relatorio/', HistoricoRelatorioAvaliador.as_view(), name='historico_relatorio'),
+    
+    #diretor
+    path('aprovacao-de-relatorio/', AprovacaoRelatorioParaDiretor.as_view(), name='aprovacao_relatorio'),
     path('update-status-relatorio/<int:pk>', UpdateStatusRelatorio.as_view(), name='update-relatorio'),
+    
+    #estagiário
+    path('resumos/upload-resumo/', CadastroResumoPorEstagiario.as_view(), name='upload-resumo'),
+    
     
     #Login e Logout
     path('login', Login.as_view(), name='login'),
