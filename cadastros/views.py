@@ -1,11 +1,16 @@
-from django.shortcuts import render
+import os
+from django.http import FileResponse, Http404
+from django.shortcuts import get_object_or_404, render
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 from django.contrib.auth.views import LoginView
+from django.views.generic.detail import BaseDetailView
+from django.views.decorators.clickjacking import xframe_options_exempt
 
 from .forms import LoginResumoForm
 from .models import Reeducando, Relatorio, Resumo, Usuario
+from gerenciadorResumosPy import settings
 #serve para redirecionar página
 from django.urls import reverse_lazy
 
@@ -206,7 +211,6 @@ produzindo assim o relatório.
 É o CadastroRelatorio
 '''
 class Corretor(CreateView):
-    #talvez seja preciso trocar para Relatorio
     model = Relatorio
     template_name = 'corretor.html'
     fields = ['nota_conteudo','nota_estrutura','nota_ortografia', 'comentario',]
@@ -257,3 +261,27 @@ class CadastroResumoPorEstagiario(CreateView):
     
     #recebe o apelido da página que foi defino em urls.py
     success_url = reverse_lazy('resumo_listagem')
+    
+'''    
+https://stackoverflow.com/questions/11779246/how-to-show-a-pdf-file-in-a-django-view
+class VisualizadorResumo(BaseDetailView):
+    
+    template_name = 'visualizador.html'
+    
+    def get(self, request, *args, **kwargs):
+        id = self.kwargs.get('pk', None) #1
+        resumo = get_object_or_404(Resumo, pk=id) #2
+        fname = resumo.arquivo #3
+        path = os.path.join(settings.MEDIA_ROOT, 'media\\' + fname)#4
+        response = FileResponse(open(path, 'rb'), content_type="application/pdf")
+        response["Content-Disposition"] = "filename={}".format(fname)
+        return response
+
+
+'''
+@xframe_options_exempt
+def pdf_view(request):
+    try:
+        return FileResponse(open('media_cdn/media/Certificado_Nacional_de_Covid-19.pdf_9P07O8b.PDF', 'rb'), content_type='application/pdf')
+    except FileNotFoundError:
+        raise Http404()

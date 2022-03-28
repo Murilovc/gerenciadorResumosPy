@@ -40,6 +40,9 @@ urlpatterns = [
     #estagiário
     path('resumos/upload-resumo/', CadastroResumoPorEstagiario.as_view(), name='upload-resumo'),
     
+    #visualizador de pdf
+    #path('visualizador/', VisualizadorResumo.as_view(), name='visualizador_resumo'),
+    path('visualizador/', views.pdf_view, name='visualizador'),
     
     #Login e Logout
     path('login', Login.as_view(), name='login'),

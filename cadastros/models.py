@@ -45,7 +45,7 @@ class Resumo(models.Model):
     titulo = models.CharField('Título do resumo', max_length=200, default='titulo')
     arquivo = models.FileField(upload_to='media')
     reeducando = models.ForeignKey(Reeducando, on_delete=models.CASCADE)
-    avaliador = models.ForeignKey(Usuario, on_delete=models.CASCADE, blank=True)
+    avaliador = models.ForeignKey(Usuario, on_delete=models.CASCADE, null=True)
     
     def __str__(self):
         return self.titulo

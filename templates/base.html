@@ -31,7 +31,9 @@
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-
+        
+        {% block auxiliar %}
+        
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -60,6 +62,8 @@
 
             {% endblock %}
 
+            
+            {% block usuarios %}
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -118,7 +122,7 @@
                     </div>
                 </div>
             </li>
-
+            {% endblock %}
 
             <!-- Nav Item - Charts 
             <li class="nav-item">
@@ -144,6 +148,10 @@
 
         </ul>
         <!-- End of Sidebar -->
+
+        
+
+        {% endblock %}
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">

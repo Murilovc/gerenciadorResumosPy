@@ -7,3 +7,4 @@ cadastros/migrations
 cadastros/migrations/__pycache__
 gerenciadorResumosPy/__pycache__
 db.sqlite3
+media_cdn/media
