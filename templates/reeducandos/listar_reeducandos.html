@@ -19,8 +19,7 @@
                     <tr>
                         <th>Nome</th>
                         <th>RGC</th>
-                        <th>Editar</th>
-                        <th>Excluir</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,8 +29,10 @@
                     <tr>
                         <td scope="row">{{ reeducando.nome }}</td>
                         <td>{{ reeducando.rgc }}</td>
-                        <td><a href="{% url 'reeducando_update' reeducando.pk %}" class="btn btn-warning">editar</a></td>
-                        <td><a href="{% url 'reeducando_exclusao' reeducando.pk %}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a> </td>
+                        <td>
+                            <a href="{% url 'reeducando_update' reeducando.pk %}" class="btn btn-warning">editar</a>
+                            <a href="{% url 'reeducando_exclusao' reeducando.pk %}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        </td>
                     </tr>
                                         
                     {% empty %}

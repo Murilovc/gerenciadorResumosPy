@@ -19,8 +19,8 @@
                     <tr>
                         <th>Nome</th>
                         <th>Email</th>
-                        <th>Editar</th>
-                        <th>Excluir</th>
+                        <th>Nível</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,8 +30,12 @@
                     <tr>
                         <td scope="row">{{ usuario.nome }}</td>
                         <td>{{ usuario.email }}</td>
-                        <td><a href="{% url 'update' usuario.pk %}" class="btn btn-warning">editar</a></td>
-                        <td><a href="{% url 'deletar' usuario.pk %}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a> </td>
+                        <td> {{ usuario.nivel }}</td>
+                        <td>
+                            <a href="{% url 'update' usuario.pk %}" class="btn btn-warning">editar</a>
+                            <a href="{% url 'deletar' usuario.pk %}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        </td>
+                        
                     </tr>
                                         
                     {% empty %}

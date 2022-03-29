@@ -8,44 +8,54 @@
     {% endblock %}
 
 
-        {% block conteudo %}
+    {% block conteudo %}
 
-            <h1 class="h3 mb-4 text-gray-800">Listagem de resumos</h1>
-                            
-            <hr>
+        <h1 class="h3 mb-4 text-gray-800">Listagem de resumos</h1>
+                        
+        <hr>
 
-            <table class="table table-striped ">
-                <thead >
-                    <tr>
-                        <th>Título</th>
-                        <th>Data</th>
-                        <th>Arquivo</th>
-                        <th>Reeducando</th>
-                    </tr>
-                </thead>
-                <tbody>
+        <table class="table table-striped ">
+            <thead >
+                <tr>
+                    <th>Título</th>
+                    <th>Data</th>
+                    <th>Arquivo</th>
+                    <th>Reeducando</th>
+                    <th>Avaliador</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
 
-                    {% for resumo in object_list %}
+                {% for resumo in object_list %}
 
-                    <tr>
-                        <td scope="row">{{ resumo.titulo }}</td>
-                        <td>{{ resumo.data }}</td>
-                        <td>{{ resumo.arquivo }}</td>
-                        <td>{{ resumo.reeducando }}</td>
-                        <td><a href="{% url 'resumo_update' resumo.pk %}" class="btn btn-warning">editar</a></td>
-                        <td><a href="{% url 'resumo_exclusao' resumo.pk %}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a> </td>
-                    </tr>
-                                        
-                    {% empty %}
+                <tr>
+                    <td scope="row">{{ resumo.titulo }}</td>
+                    <td>{{ resumo.data }}</td>
+                    <td>{{ resumo.arquivo }}</td>
+                    <td>{{ resumo.reeducando }}</td>
+                    {% if resumo.avaliador %}
+                        <td>{{ resumo.avaliador }}</td>
+                    {% else %}
+                        <td>Não atribuído</td>
+                    {% endif %}
                     
-                        Nada foi registrado
-                    
-                    {% endfor %}
+                    <td>
+                        <a href="{% url 'resumo_update' resumo.pk %}" class="btn btn-warning">editar</a>
+                        <a href="{% url 'resumo_exclusao' resumo.pk %}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+                                    
+                {% empty %}
+                
+                    Nada foi registrado
+                
+                {% endfor %}
 
-                </tbody>
-            </table>
+            </tbody>
+        </table>
 
-        {% endblock %}
+    {% endblock %}
  
         
 

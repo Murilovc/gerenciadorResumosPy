@@ -12,6 +12,9 @@
     {% endblock %}
 
     {% block conteudo %}
+        
+        <h3>Adicione resumos a sua fila aqui:</h3>
+    
         <table class="table table-striped ">
             <thead >
                 <tr>
@@ -31,7 +34,7 @@
                     <td>{{ resumo.data }}</td>
                     <td>{{ resumo.arquivo }}</td>
                     <td>{{ resumo.reeducando }}</td>
-                    <td><a href="{% url 'corretor' resumo.pk %}" class="btn btn-warning">Avaliar</a></td>
+                    <td><a href="{% url 'update_resumo' resumo.pk %}" class="btn btn-warning">Adicionar</a></td>
                 </tr>
                                     
                 {% empty %}

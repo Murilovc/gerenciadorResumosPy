@@ -35,9 +35,10 @@
                 <tr>
                     <td scope="row">{{ resumo.titulo }}</td>
                     <td>{{ resumo.data }}</td>
+                    <!-- Colocar aqui o link para o arquivo -->
                     <td>{{ resumo.arquivo }}</td>
                     <td>{{ resumo.reeducando }}</td>
-                    <td><a href="{% url 'corretor' resumo.pk %}" class="btn btn-warning">Avaliar</a></td>
+                    <td><a href="{% url 'corretor' resumo.pk %}" class="btn btn-info">Avaliar</a></td>
                 </tr>
                                     
                 {% empty %}

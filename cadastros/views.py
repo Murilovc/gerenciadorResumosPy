@@ -228,7 +228,11 @@ class Corretor(CreateView):
         return resumo
     
 
-
+class UpdateResumoParaAvaliador(UpdateView):
+    model = Resumo
+    fields = ['avaliador']
+    template_name = 'resumos/update_avaliador_resumo.html'
+    success_url = reverse_lazy('escolha_resumo')
 '''
 Página acessível apenas ao Usuário do tipo Diretor.
 Exibe uma lista de todos os relatórios não aprovados,
