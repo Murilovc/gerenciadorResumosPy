@@ -3,7 +3,7 @@
 {% load static %}
   
     {% block titulo %}
-    <title>Cadastros</title>
+    <title>Reeducandos</title>
     {% endblock %}
 
 
@@ -12,7 +12,7 @@
         {% block conteudo %}
 
                 {% if object.pk %}
-                <h1 class="h3 mb-4 text-gray-800">Editando Cadastro</h1>
+                <h1 class="h3 mb-4 text-gray-800">Editar reeducando</h1>
                 {% else %}
                 <h1 class="h3 mb-4 text-gray-800">Cadastrar novo reeducando</h1>
                 {% endif %}
@@ -25,7 +25,7 @@
                         {% if object.pk %}
                         <button type="submit" class="save btn btn-warning">Salvar Edição</button>
                         {% else %}
-                        <button type="submit" class="save btn btn-success">Salvar Cadastro</button>
+                        <button type="submit" class="save btn btn-success">Salvar</button>
                         {% endif %}
 
                     </div>

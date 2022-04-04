@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+
+{% load static %}
+  
+    {% block titulo %}
+    <title>Cadastros</title>
+    {% endblock %}
+
+
+    {% load crispy_forms_tags %}
+    
+    {% block conteudo %}
+        {% if request.user.nivel == 1 %}    
+        <div class="container">
+            <p><h3>Insira as informações do usuário para cadastrá-lo</h3></p>
+            <form action="{% url 'cadastro' %}" method="POST">
+                {% csrf_token %}
+                {{form | crispy}}
+                <div>
+                    <label>Nome do usuário*</label>
+                    <input class="form-control" type="text" placeholder="Nome..." name="nome">
+                    <br>
+
+                    <label>Email do usuário*</label>
+                    <input class="form-control" type="email" placeholder="Email..." name="email">
+                    <br>
+
+                    <label>Senha do usuário*</label>
+                    <input class="form-control" type="password" placeholder="Senha..." name="senha">
+                    <br>
+
+                    <label>Tipo do usuário*</label>
+                    <select class="form-control" name="nivel" id="nivel">
+                        <option value="1" selected> Administrador </option>
+                        <option value="2" selected> Estagiário </option> 
+                        <option value="3" selected> Diretor </option> 
+                        <option value="4" selected> Avaliador </option>  
+
+                    </select>
+                </div>
+                <br>
+                {% for message in messages %}
+                    <div class="alert alert-danger">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                
+                <br>
+                <br>
+                
+                <input class="save btn btn-success" type="submit" value="cadastrar">
+                <br>
+            </form>
+        </div>
+        {% endif %} 
+    {% endblock %}
+              
+

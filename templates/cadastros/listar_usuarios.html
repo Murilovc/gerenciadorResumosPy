@@ -15,7 +15,7 @@
             <hr>
 
             <table class="table table-striped ">
-                <thead >
+                <thead class="thead thead-dark">
                     <tr>
                         <th>Nome</th>
                         <th>Email</th>
@@ -28,9 +28,21 @@
                     {% for usuario in object_list %}
 
                     <tr>
-                        <td scope="row">{{ usuario.nome }}</td>
+                        <td scope="row">{{ usuario.first_name }}</td>
                         <td>{{ usuario.email }}</td>
-                        <td> {{ usuario.nivel }}</td>
+                        {% if usuario.nivel == 1 %}
+                        <td> Administrador</td>
+                        {% else %}
+                            {% if usuario.nivel == 2 %}
+                            <td> Estagiário</td>
+                            {% else %}
+                                {% if usuario.nivel == 3 %}
+                                <td> Diretor</td>
+                                {% else %}
+                                <td> Avaliador</td>
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
                         <td>
                             <a href="{% url 'update' usuario.pk %}" class="btn btn-warning">editar</a>
                             <a href="{% url 'deletar' usuario.pk %}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>

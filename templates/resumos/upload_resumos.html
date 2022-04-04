@@ -1,28 +1,28 @@
-{% extends 'base.html' %}
+{% extends 'index.html' %}
 
 {% load static %}
   
     {% block titulo %}
-    <title>Cadastros</title>
+    <title>Upload</title>
     {% endblock %}
 
 
     {% load crispy_forms_tags %}
     
         {% block conteudo %}
-
-                <h1 class="h3 mb-4 text-gray-800">Cadastros</h1>
+            {% if request.user.nivel == 2 %}
+                <h1 class="h3 mb-4 text-gray-800">Upload de resumo</h1>
                 
                 <form method="POST" action="" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form | crispy }}
                     <div class="text-right">
 
-                        <button type="submit" class="save btn btn-success">Salvar Cadastro</button>
+                        <button type="submit" class="save btn btn-success">Salvar</button>
 
                     </div>
                 </form>
-
+            {% endif %}
         {% endblock %}
                
 

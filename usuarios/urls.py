@@ -1,13 +1,12 @@
 from django.urls import path
-from cadastros import views
-from cadastros.views import AdicaoResumoParaAvaliador, AprovacaoRelatorioParaDiretor, CadastroReeducando, CadastroResumo, CadastroResumoPorEstagiario, CadastroUsuario, Corretor, ExclusaoReeducando, ExclusaoRelatorio, ExclusaoResumo, HistoricoRelatorioAvaliador, ListagemReeducando, ListagemRelatorio, ListagemResumo, ListagemUsuario, Login, SalaCorrecao, UpdateReeducando, UpdateResumo, UpdateResumoParaAvaliador, UpdateStatusRelatorio, UpdateUsuario, DeleteUsuario
-
+from . import views
+from usuarios.views import AdicaoResumoParaAvaliador, AprovacaoRelatorioParaDiretor, CadastroReeducando, CadastroResumo, CadastroResumoPorEstagiario, Corretor, ExclusaoReeducando, ExclusaoRelatorio, ExclusaoResumo, HistoricoRelatorioAvaliador, ListagemReeducando, ListagemRelatorio, ListagemResumo, ListagemUsuario, SalaCorrecao, UpdateReeducando, UpdateResumo, UpdateStatusRelatorio, UpdateUsuario, DeleteUsuario
 
 urlpatterns = [
     path('', views.abertura_modelform, name='index'),
-    
-    # Páginas da área administrativa
-    path('usuarios/cadastros/', CadastroUsuario.as_view(), name='cadastro'),
+    path('cadastro/', views.cadastro, name='cadastro'),
+    path('login/', views.login, name='login'),
+    path('logout/', views.logout, name='logout'),
     path('usuarios/listagem/', ListagemUsuario.as_view(), name='listagem'),
     path('usuarios/update/<int:pk>', UpdateUsuario.as_view(), name='update'),
     path('usuarios/deletar/<int:pk>', DeleteUsuario.as_view(), name='deletar'),
@@ -30,7 +29,6 @@ urlpatterns = [
     #avaliador
     path('sala-correcao/', SalaCorrecao.as_view(), name='sala_correcao'),
     path('escolha-resumo/', AdicaoResumoParaAvaliador.as_view(), name='escolha_resumo'),
-    path('update-avaliador-resumo/<int:pk>', UpdateResumoParaAvaliador.as_view(), name='update_resumo'),
     path('corretor/<int:pk>', Corretor.as_view(), name='corretor'),
     path('historico-de-relatorio/', HistoricoRelatorioAvaliador.as_view(), name='historico_relatorio'),
     
@@ -43,8 +41,7 @@ urlpatterns = [
     
     #visualizador de pdf
     #path('visualizador/', VisualizadorResumo.as_view(), name='visualizador_resumo'),
-    path('visualizador/', views.pdf_view, name='visualizador'),
+    path('visualizador/<int:pk>', views.pdf_view, name='visualizador'),
     
-    #Login e Logout
-    path('login', Login.as_view(), name='login'),
+
 ]

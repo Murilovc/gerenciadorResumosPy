@@ -7,6 +7,7 @@
     {% endblock %}
 
     {% block administrativo %}
+    {% if request.user.nivel == 1 %}
 
         <!-- Heading -->
         <div class="sidebar-heading">
@@ -78,12 +79,78 @@
                 </div>
             </div>
         </li>
+    {% endif %}
+    {% endblock %}
 
+    {% block usuarios %}
+        {% if request.user.nivel == 4 %}
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Mapa do site
+            </div>
+
+
+            <!-- Nav Item - Collapse Menu da Sala de Correção -->
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseCorrecao" aria-expanded="true"
+                    aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Sala de Correção</span>
+                </a>
+                <div id="collapseCorrecao" class="collapse" aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{% url 'sala_correcao' %}">Página principal</a>
+                        <!--<a class="collapse-item" href="{% url 'escolha_resumo' %}">Adicionar resumo a fila</a>-->
+                        <a class="collapse-item" href="{% url 'historico_relatorio' %}">Ver histórico</a>
+                    </div>
+                </div>
+            </li>
+        {% endif %}
+        
+        {% if request.user.nivel == 3 %}
+            <!-- Nav Item - Collapse Menu da Área do Diretor -->
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseDiretor" aria-expanded="true"
+                    aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Área do Diretor</span>
+                </a>
+                <div id="collapseDiretor" class="collapse" aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{% url 'aprovacao_relatorio' %}">Fila de aprovação</a>
+                        <a class="collapse-item" href="{% url 'historico_relatorio' %}">Histórico de rejeição</a>
+                    </div>
+                </div>
+            </li>
+        {% endif %}
+        
+        {% if request.user.nivel == 2 %}
+            <!-- Nav Item - Collapse Menu da Área do Estagiário-->
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseEstagiario" aria-expanded="true"
+                    aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Área do Estagiário</span>
+                </a>
+                <div id="collapseEstagiario" class="collapse" aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{% url 'upload-resumo' %}">Fazer upload de resumo</a>
+                    </div>
+                </div>
+            </li>
+        {% endif %}
     {% endblock %}
 
 
 
     {% block conteudo %}
-    <h1 class="h3 mb-4 text-gray-800">Olá, bem-vindo ao Gerenciador de Resumos da PROEX</h1>
+    <h1 class="h3 mb-4 text-gray-800">Olá {{request.user.first_name}}, bem-vindo ao Gerenciador de Resumos da PROEX</h1>
+    <img src="{% static 'img/logo_proex.png' %}" width="960" height="380" align="middle">
 
     {% endblock %}

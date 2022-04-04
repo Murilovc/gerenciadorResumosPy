@@ -9,10 +9,10 @@
     {% load crispy_forms_tags %}
     {% block conteudo %}
 
-        <h1 class="h3 mb-4 text-gray-800">Excluir Cadastros</h1>
+        <h1 class="h3 mb-4 text-gray-800">Excluir Usuário</h1>
         <br>
-        <p>Deseja excluir o cadastro </p>
-        <br> Nome: <b> {{ object.nome }} </b> 
+        <p>Deseja excluir o usuário </p>
+        <br> Nome: <b> {{ object.first_name }} </b> 
         <br> Email: <b> {{ object.email }} 
     
         <form method="POST" action="">

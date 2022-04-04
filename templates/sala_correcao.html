@@ -11,42 +11,71 @@
 
     {% endblock %}
 
-    {% block conteudo %}
-        
-        <h3>Selecione um resumo para avaliar</h3>
-        <br>
-        <br>
-    
-        <div class="container">
-        <table class="table table-striped ">
-            <thead >
-                <tr>
-                    <th>Titulo</th>
-                    <th>Data</th>
-                    <th>Arquivo</th>
-                    <th>Reeducando</th>
-                    <th>Ação</th>
-                </tr>
-            </thead>
-            <tbody>
+    {% block usuarios %}
+        <!-- Divider -->
+        <hr class="sidebar-divider">
 
-                {% for resumo in object_list %}
-                
-                <tr>
-                    <td scope="row">{{ resumo.titulo }}</td>
-                    <td>{{ resumo.data }}</td>
-                    <!-- Colocar aqui o link para o arquivo -->
-                    <td>{{ resumo.arquivo }}</td>
-                    <td>{{ resumo.reeducando }}</td>
-                    <td><a href="{% url 'corretor' resumo.pk %}" class="btn btn-info">Avaliar</a></td>
-                </tr>
-                                    
-                {% empty %}
-                
-                    Nada foi registrado
-                
-                {% endfor %}
-            </tbody>
-        </table>
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Mapa do site
         </div>
+
+
+        <!-- Nav Item - Collapse Menu da Sala de Correção -->
+        <li class="nav-item">
+            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseCorrecao" aria-expanded="true"
+                aria-controls="collapsePages">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Sala de Correção</span>
+            </a>
+            <div id="collapseCorrecao" class="collapse" aria-labelledby="headingPages"
+                data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{% url 'sala_correcao' %}">Página principal</a>
+                    <!--<a class="collapse-item" href="{% url 'escolha_resumo' %}">Adicionar resumo a fila</a>-->
+                    <a class="collapse-item" href="{% url 'historico_relatorio' %}">Ver histórico</a>
+                </div>
+            </div>
+        </li>
     {% endblock %}
+    
+    {% block conteudo %}
+        {% if request.user.nivel == 4 %}    
+            <h3>Selecione um resumo para avaliar</h3>
+            <br>
+            <br>
+        
+            <div class="container">
+            <table class="table table-striped ">
+                <thead >
+                    <tr>
+                        <th>Titulo</th>
+                        <th>Data</th>
+                        <th>Arquivo</th>
+                        <th>Reeducando</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for resumo in object_list %}
+                    
+                    <tr>
+                        <td scope="row">{{ resumo.titulo }}</td>
+                        <td>{{ resumo.data }}</td>
+                        <td><a href="{{ MEDIA_URL }}{{ resumo.arquivo.url }}" target="_blank">Ver</a></td>
+                        <td>{{ resumo.reeducando }}</td>
+                        <td><a href="{% url 'corretor' resumo.pk %}" class="btn btn-info">Avaliar</a></td>
+                    </tr>
+                                        
+                    {% empty %}
+                    
+                        Nada foi registrado
+                    
+                    {% endfor %}
+                </tbody>
+            </table>
+            </div>
+        {% endif %}
+    {% endblock %}
+    

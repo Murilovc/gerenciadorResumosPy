@@ -1,2 +1,2 @@
-# gerenciadorResumosPy
-Gerenciador de resumos produzidos por reeducandos
+# Oficial
+Pooejto de Extensão - UFAC/2022

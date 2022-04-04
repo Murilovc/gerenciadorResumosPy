@@ -1,4 +1,4 @@
-"""gerenciadorResumosPy URL Configuration
+"""proex URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
@@ -15,12 +15,12 @@ Including another URLconf
 """
 from django.conf import settings
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import path, include
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('cadastros.urls'))
+    path('', include('usuarios.urls'))
 ]
 
 if settings.DEBUG:

@@ -64,79 +64,8 @@
 
             
             {% block usuarios %}
-            <!-- Divider -->
-            <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Mapa do site
-            </div>
-
-
-            <!-- Nav Item - Collapse Menu da Sala de Correção -->
-            <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseCorrecao" aria-expanded="true"
-                    aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Sala de Correção</span>
-                </a>
-                <div id="collapseCorrecao" class="collapse" aria-labelledby="headingPages"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{% url 'sala_correcao' %}">Página principal</a>
-                        <a class="collapse-item" href="{% url 'escolha_resumo' %}">Adicionar resumo a fila</a>
-                        <a class="collapse-item" href="{% url 'historico_relatorio' %}">Ver histórico</a>
-                    </div>
-                </div>
-            </li>
-
-
-            <!-- Nav Item - Collapse Menu da Área do Diretor -->
-            <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseDiretor" aria-expanded="true"
-                    aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Área do Diretor</span>
-                </a>
-                <div id="collapseDiretor" class="collapse" aria-labelledby="headingPages"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{% url 'aprovacao_relatorio' %}">Fila de aprovação</a>
-                        <a class="collapse-item" href="{% url 'historico_relatorio' %}">Histórico de rejeição</a>
-                    </div>
-                </div>
-            </li>
-
-
-            <!-- Nav Item - Collapse Menu da Área do Estagiário-->
-            <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseEstagiario" aria-expanded="true"
-                    aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Área do Estagiário</span>
-                </a>
-                <div id="collapseEstagiario" class="collapse" aria-labelledby="headingPages"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{% url 'upload-resumo' %}">Fazer upload de resumo</a>
-                    </div>
-                </div>
-            </li>
             {% endblock %}
-
-            <!-- Nav Item - Charts 
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-            </li>-->
-
-            <!-- Nav Item - Tables 
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>-->
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -148,8 +77,6 @@
 
         </ul>
         <!-- End of Sidebar -->
-
-        
 
         {% endblock %}
 
@@ -214,21 +141,33 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{request.user.username}}</span>
+                                {% if request.user.nivel == 1 %}
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> Administrador</span>
+                                    {% elif request.user.nivel == 4 %}
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"> Avaliador</span>
+                                    {% elif request.user.nivel == 3 %}
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"> Diretor</span>
+                                    {% else %}
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"> Estagiário</span>
+                                {% endif %}
+                                <!--Permitir upload de imagem de perfil de usuário no futuro
+                                    <img class="img-profile rounded-circle"
+                                    src="img/undraw_profile.svg">-->
                             </a>
+
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <!--TO DO Abrir o formulário de edição de usuário do próprio usuário logado
+                                    <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{% url 'login' %}" data-toggle="modal" data-target="#logoutModal">
+                                <div class="dropdown-divider"></div>-->
+                                <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Login
+                                    Sair
                                 </a>
                             </div>
                         </li>
@@ -254,16 +193,6 @@
             </div>
             <!-- End of Main Content -->
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; UFAC</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
-
         </div>
         <!-- End of Content Wrapper -->
 
@@ -281,15 +210,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Quer mesmo sair?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Login" </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                    <a class="btn btn-primary" href="{% url 'logout' %}">Sair</a>
                 </div>
             </div>
         </div>
@@ -306,5 +234,27 @@
     <script src={% static "js/sb-admin-2.min.js" %}></script>
 
 </body>
+<!-- Footer -->
+<footer class="text-bottom text-white">
+    <section class="">
+        <!-- Grid container -->
+        <div class="text-center p-3" style="background-color: #4e73df;">
+            <img class="mx-auto d-block" src="{% static 'img/apoio.png' %}">         
+            <span class="me-1">Sistema de Avaliação de Resumos da PROEX</span>
+            
+        </div>
+        <!-- Grid container -->
+        <!-- Copyright -->
+        <div class="text-center p-1" style="background-color: #4e73df;">
+            ©Copyright: Universidade Federal do Acre
+            <br>
+            Site feito por
+            <a href="https://github.com/JonatanFragoso" style="color:White">Jonatan Rodrigues Fragoso</a> e 
+            <a href="https://github.com/Murilovc" style="color:White">Murilo Vieira Cardoso</a>
+        </div>
+        <!-- Copyright -->
+
+    </section>
+</footer>
 
 </html>

@@ -103,16 +103,16 @@
 		</style>
 	</head>
 	<body>
-
-		<form method="POST" action="">
-			<div class="login-form">
+		{% load static %}
+		<form action="{% url 'login' %}" method="POST">{% csrf_token %}
+			<div class="login-form"> 
 				<!-- outros valores
 				
 				w=138
 				h=200
 				
 				-->
-				<img class="mx-auto d-block" src="images/logo_ufac.png" width="92" height="133" >
+				<img class="mx-auto d-block" src="{% static 'img/logo_ufac.png' %}" width="92" height="133" >
 				<h4 class="modal-title">Acesse sua conta</h4>
 				<div class="form-group">
 					<input type="email" name="email" class="form-control" placeholder="E-mail" required="required">
@@ -120,12 +120,17 @@
 				<div class="form-group">
 					<input type="password" name="senha" class="form-control" placeholder="Senha" required="required">
 				</div>
+				{% for message in messages %}
+				<div class="alert alert-danger">
+					{{ message }}
+				  </div>
+				  {% endfor %}
 				  <div class="form-group">
 				      <div class="row">
 				          <div class="col-2"> <input name="termo_avaliador" type="checkbox" class="form-control" id="inputTermo" required="required"></div>
-				          <div class="col-10">Declaro que  <a href="http://apps-proex.ufac.br/projetoNove/arquivos/termocompromisso.pdf" target="_blank">li e aceito</a> os termos apresentados</div>
+				          <div class="col-10">Declaro que  <a href="{% static 'pdf/termocompromisso.pdf' %}" target="_blank">li e aceito</a> os termos apresentados</div>
 				      </div>
-                       
+					                         
                 </div>
 				<input type="submit" name="btnLogin" class="btn btn-primary btn-block btn-lg" value="Acessar">              
 			</div>

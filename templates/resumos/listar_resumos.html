@@ -15,7 +15,7 @@
         <hr>
 
         <table class="table table-striped ">
-            <thead >
+            <thead class="thead thead-dark">
                 <tr>
                     <th>Título</th>
                     <th>Data</th>
@@ -32,7 +32,7 @@
                 <tr>
                     <td scope="row">{{ resumo.titulo }}</td>
                     <td>{{ resumo.data }}</td>
-                    <td>{{ resumo.arquivo }}</td>
+                    <td><a href="{{ MEDIA_URL }}{{ resumo.arquivo.url }}" target="_blank">Ver</a></td>
                     <td>{{ resumo.reeducando }}</td>
                     {% if resumo.avaliador %}
                         <td>{{ resumo.avaliador }}</td>
